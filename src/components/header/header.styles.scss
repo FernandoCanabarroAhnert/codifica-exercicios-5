@@ -1,0 +1,42 @@
+@use '../../styles/global.scss';
+@use '../../styles/variables.scss' as variables;
+
+.header {
+    background-color: transparent;
+    padding: 1.5rem;
+
+    &__container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    &__nav {
+        border-radius: .875rem;
+        border: 2px solid variables.$secondary-color;
+        padding: 1rem;
+        background-color: variables.$dark-color;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__list {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+    }
+
+    &__link {
+        border-radius: .725rem;
+        padding: .75rem .625rem;
+        font-weight: 500;
+        font-size: 1rem;
+        color: variables.$gray-color;
+        &--active {
+            background-color: variables.$secondary-color;
+            color: #d3d3d3;
+        }
+    }
+
+}

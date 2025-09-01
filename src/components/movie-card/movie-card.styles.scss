@@ -1,0 +1,68 @@
+@use '../../styles/variables.scss' as variables;
+
+.movie-card {
+    cursor: pointer;
+    border-radius: .5rem;
+    border: 1px solid #333;
+    background-color: variables.$secondary-color;
+    padding: 1rem;
+
+    &__relative {
+        position: relative;
+    }
+
+    &__favorite {
+        cursor: pointer;
+        position: absolute;
+        top: .5rem;
+        right: .5rem;
+        font-size: 2rem;
+        color: variables.$gray-color;
+        background-color: variables.$dark-color;
+        padding: .625rem;
+        padding-bottom: .475rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+    }
+
+    &__image {
+        border-radius: .75rem;
+        width: 100%;
+    }
+
+    &__title {
+        color: variables.$gray-color;
+    }
+
+    &__row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: .625rem;
+        color: variables.$gray-color;
+        padding: .625rem;
+        border-radius: 1.25rem;
+        background-color: variables.$dark-color;
+    }
+
+    &__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.425rem;
+    }
+
+}

@@ -1,0 +1,6 @@
+@use '../../styles/variables.scss';
+@use '../../styles/global.scss';
+
+.layout {
+    background-color: variables.$primary-color;
+}

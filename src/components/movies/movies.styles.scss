@@ -1,0 +1,71 @@
+@use '../../styles/variables.scss' as variables;
+
+.movies {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding-bottom: 1.5rem;
+
+    &__grid {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    &__form {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__input {
+        border-top-left-radius: 1.25rem;
+        border-bottom-left-radius: 1.25rem;
+        padding: .25rem .75rem;
+        font-size: 1.175rem;
+    }
+
+    &__button {
+        width: 3.25rem;
+        height: 3.25rem;
+        border-top-right-radius: 1.25rem;
+        border-bottom-right-radius: 1.25rem;
+        padding: .5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        background-color: variables.$secondary-color;
+        border: 1px solid variables.$secondary-color;
+    }
+
+    &__search-icon {
+        width: 2.625rem;
+    }
+
+}
+
+@media (min-width: 640px) {
+    .movies {
+        &__grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .movies {
+        &__grid {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    .movies {
+        &__grid {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+    }
+}
