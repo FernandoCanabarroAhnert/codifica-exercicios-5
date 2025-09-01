@@ -2,6 +2,7 @@ import './movies.styles.scss'
 import { useEffect, useState } from 'react';
 import MovieCard from '../movie-card/movie-card.component';
 import Paginator from '../paginator/paginator.component';
+import MoviesGrid from '../movies-grid/movies-grid.component';
 
 const jwtToken = import.meta.env.VITE_JWT_TOKEN;
 
@@ -50,11 +51,7 @@ export default function Movies() {
                     <img className='movies__search-icon' src="search.svg" alt="Pesquisar" title='Pesquisar' />
                 </button>
             </form>
-            <div className="movies__grid">
-                {
-                    pageResponse.results && pageResponse.results.map(movie => <MovieCard key={movie.id} movie={movie} />)
-                }
-            </div>
+            <MoviesGrid movies={pageResponse.results} />
             <Paginator currentPage={pageResponse.page} totalPages={pageResponse.total_pages > 500 ? 500 : pageResponse.total_pages} onPageChange={handlePageChange} />
         </div>
     )

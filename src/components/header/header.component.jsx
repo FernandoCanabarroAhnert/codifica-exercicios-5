@@ -16,7 +16,6 @@ export default function Header() {
                         </li>
                     </ul>
                 </div>
-                <div className="header__space"></div>
             </div>
         </header>
     )

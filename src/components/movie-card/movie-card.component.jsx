@@ -1,14 +1,22 @@
+import { useContext } from 'react';
 import './movie-card.styles.scss';
+import { FavoriteMoviesContext } from '../../contexts/favorite-movies.context';
 
 export default function MovieCard({ movie }) {
-    //https://image.tmdb.org/t/p/w500/yvirUYrva23IudARHn3mMGVxWqM.jpg
+    const { favoriteMovies, handleFavoriteMovie } = useContext(FavoriteMoviesContext);
+
     const formatNumber = (rating) => {
         return rating.toFixed(1);
     }
+
+    const isMovieFavorited = favoriteMovies.some(favMovie => favMovie.id === movie.id);
+
     return (
         <div className="movie-card" title={movie.title}>
             <div className="movie-card__relative">
-                <i className="bi bi-heart movie-card__favorite"></i>
+                <i className={isMovieFavorited ? "bi bi-heart-fill movie-card__favorite" : "bi bi-heart movie-card__favorite"} 
+                    onClick={() => handleFavoriteMovie(movie)} 
+                    title={isMovieFavorited ? "Remover dos favoritos" : "Adicionar aos favoritos"}></i>
                 <img className='movie-card__image' src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`} alt={movie.title} />
             </div>
             <div className="movie-card__body">
