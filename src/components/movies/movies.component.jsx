@@ -1,37 +1,20 @@
 import './movies.styles.scss'
 import { useEffect, useState } from 'react';
-import MovieCard from '../movie-card/movie-card.component';
 import Paginator from '../paginator/paginator.component';
 import MoviesGrid from '../movies-grid/movies-grid.component';
-
-const jwtToken = import.meta.env.VITE_JWT_TOKEN;
+import MoviesService from '../../services/movies.service';
 
 export default function Movies() {
+    const moviesService = MoviesService.getInstance();
     const [searchQuery, setSearchQuery] = useState('');
     const [pageResponse, setPageResponse] = useState({});
 
-    const initialUrl = 'https://api.themoviedb.org/3/movie/popular?language=pt-BR';
-    const options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            Authorization: 'Bearer ' + jwtToken
-        }
-    };
-
     useEffect(() => {
-        searchMovies();
+        moviesService.findAllMovies(searchQuery, 1).then(setPageResponse);
     }, []);
 
     const searchMovies = (selectedPage = 1) => {
-        let searchUrl = `https://api.themoviedb.org/3/search/movie?query=${searchQuery}&include_adult=true&language=pt-BR&page=${selectedPage}`;
-        if (searchQuery === '') {
-            searchUrl = initialUrl + `&page=${selectedPage}`;
-        }
-        fetch(searchUrl, options)
-            .then(res => res.json())
-            .then(setPageResponse)
-            .catch(err => console.error(err));
+        moviesService.findAllMovies(searchQuery, selectedPage).then(setPageResponse);
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
