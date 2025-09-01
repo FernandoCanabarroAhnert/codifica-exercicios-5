@@ -7,6 +7,7 @@ export default function Favorites() {
     const { favoriteMovies } = useContext(FavoriteMoviesContext);
     return (
         <div className="favorites">
+            <h1 className="favorites__title">Filmes Favoritos</h1>
             <MovieGrid movies={favoriteMovies} />
         </div>
     )
